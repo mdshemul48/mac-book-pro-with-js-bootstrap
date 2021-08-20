@@ -6,6 +6,7 @@ function elementById(elementId) {
 function updatePrice(elementId, price) {
   const selectedElement = document.getElementById(elementId);
   selectedElement.innerText = price;
+  calculateTotalPrice();
 }
 
 function setListenerAndUpdatePrice(optionElementId, priceTagId, price) {
@@ -14,6 +15,20 @@ function setListenerAndUpdatePrice(optionElementId, priceTagId, price) {
   });
 }
 
+function calculateTotalPrice() {
+  const itemPrice = elementById("item-price").innerText;
+  const extraMemoryPrice = elementById("extra-memory-price").innerText;
+  const extraStoragePrice = elementById("extra-storage-price").innerText;
+  const deliveryChange = elementById("delivery-charge-price").innerText;
+
+  let total = 0;
+  total += parseInt(itemPrice);
+  total += parseInt(extraMemoryPrice);
+  total += parseInt(extraStoragePrice);
+  total += parseInt(deliveryChange);
+
+  elementById("total-price").innerText = total;
+}
 //  ===================== memory price updating =================================
 setListenerAndUpdatePrice("memory-8gb-option", "extra-memory-price", 0);
 setListenerAndUpdatePrice("memory-16gb-option", "extra-memory-price", 180);
