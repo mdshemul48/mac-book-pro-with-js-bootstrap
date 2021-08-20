@@ -1,20 +1,23 @@
-// this will return the element. then i will add event listener to this element
+// this will return the element. then i will add event listener to this element.
 function elementById(elementId) {
   return document.getElementById(elementId);
 }
 
+//  this will update components price like memory and storage then it will update the total price.
 function updatePrice(elementId, price) {
   const selectedElement = document.getElementById(elementId);
   selectedElement.innerText = price;
   calculateTotalPrice();
 }
 
+//  this will add event listener to element and update price on click
 function setListenerAndUpdatePrice(optionElementId, priceTagId, price) {
   elementById(optionElementId).addEventListener("click", function () {
     updatePrice(priceTagId, price);
   });
 }
 
+// calculation total price
 function calculateTotalPrice() {
   const itemPrice = elementById("item-price").innerText;
   const extraMemoryPrice = elementById("extra-memory-price").innerText;
@@ -31,6 +34,7 @@ function calculateTotalPrice() {
   elementById("discount-price").innerText = total;
 }
 
+// adding discount to total price after pomo code.
 function discountOnTotalPrice() {
   const totalPriceElement = elementById("total-price").innerText;
   const totalPrice = parseInt(totalPriceElement);
