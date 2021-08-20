@@ -1,7 +1,6 @@
 // this will return the element. then i will add event listener to this element
-function getTheElement(elementId) {
-  const element = document.getElementById(elementId);
-  return element;
+function elementById(elementId) {
+  return document.getElementById(elementId);
 }
 
 function updatePrice(elementId, price) {
@@ -9,30 +8,17 @@ function updatePrice(elementId, price) {
   selectedElement.innerText = price;
 }
 
-//  memory price updating
-const memoryOption8GB = getTheElement("memory-8gb-option");
-memoryOption8GB.addEventListener("click", function () {
-  updatePrice("extra-memory-price", 0);
-});
+function setListenerAndUpdatePrice(optionElementId, priceTagId, price) {
+  elementById(optionElementId).addEventListener("click", function () {
+    updatePrice(priceTagId, price);
+  });
+}
 
-const memoryOption16GB = getTheElement("memory-16gb-option");
-memoryOption16GB.addEventListener("click", function () {
-  updatePrice("extra-memory-price", 180);
-});
+//  ===================== memory price updating =================================
+setListenerAndUpdatePrice("memory-8gb-option", "extra-memory-price", 0);
+setListenerAndUpdatePrice("memory-16gb-option", "extra-memory-price", 180);
 
 //  ===================== storage price updating =================================
-
-const storageOption256GB = getTheElement("storage-option-256gb");
-storageOption256GB.addEventListener("click", function () {
-  updatePrice("extra-storage-price", 180);
-});
-
-const storageOption512GB = getTheElement("storage-option-512gb");
-storageOption512GB.addEventListener("click", function () {
-  updatePrice("extra-storage-price", 180);
-});
-
-const storageOption1TB = getTheElement("storage-option-1tb");
-storageOption1TB.addEventListener("click", function () {
-  updatePrice("extra-storage-price", 180);
-});
+setListenerAndUpdatePrice("storage-option-256gb", "extra-storage-price", 0);
+setListenerAndUpdatePrice("storage-option-512gb", "extra-storage-price", 30);
+setListenerAndUpdatePrice("storage-option-1tb", "extra-storage-price", 50);
