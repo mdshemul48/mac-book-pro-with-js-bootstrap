@@ -35,16 +35,17 @@ function discountOnTotalPrice() {
   const totalPriceElement = elementById("total-price").innerText;
   const totalPrice = parseInt(totalPriceElement);
 
-  const totalPricePercent = (totalPrice * 20) / 100;
-  discountPrice = totalPrice - totalPricePercent;
+  const total20PercentPrice = (totalPrice * 20) / 100;
+  discountPrice = totalPrice - total20PercentPrice;
 
+  elementById("pomo-code-box").value = "";
   elementById("discount-price").innerText = discountPrice;
 }
 
 // =============== adding Listener to the pomo button and updating discount price =====================
 elementById("pomo-code-apply-button").addEventListener("click", function () {
   const promoCodeBoxInput = elementById("pomo-code-box").value;
-  if (promoCodeBoxInput == "gg") {
+  if (promoCodeBoxInput == "stevekaku") {
     discountOnTotalPrice();
   }
 });
