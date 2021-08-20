@@ -29,6 +29,25 @@ function calculateTotalPrice() {
 
   elementById("total-price").innerText = total;
 }
+
+function discountOnTotalPrice() {
+  const totalPriceElement = elementById("total-price").innerText;
+  const totalPrice = parseInt(totalPriceElement);
+
+  const totalPricePercent = (totalPrice * 20) / 100;
+  discountPrice = totalPrice - totalPricePercent;
+
+  elementById("discount-price").innerText = discountPrice;
+}
+
+// ===================== adding Listener to the pomo button and updating discount price
+elementById("pomo-code-apply-button").addEventListener("click", function () {
+  const promoCodeBoxInput = elementById("pomo-code-box").value;
+  if (promoCodeBoxInput == "gg") {
+    discountOnTotalPrice();
+  }
+});
+
 //  ===================== memory price updating =================================
 setListenerAndUpdatePrice("memory-8gb-option", "extra-memory-price", 0);
 setListenerAndUpdatePrice("memory-16gb-option", "extra-memory-price", 180);
