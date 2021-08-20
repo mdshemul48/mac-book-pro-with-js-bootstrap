@@ -28,6 +28,7 @@ function calculateTotalPrice() {
   total += parseInt(deliveryChange);
 
   elementById("total-price").innerText = total;
+  elementById("discount-price").innerText = total;
 }
 
 function discountOnTotalPrice() {
@@ -40,7 +41,7 @@ function discountOnTotalPrice() {
   elementById("discount-price").innerText = discountPrice;
 }
 
-// ===================== adding Listener to the pomo button and updating discount price
+// =============== adding Listener to the pomo button and updating discount price =====================
 elementById("pomo-code-apply-button").addEventListener("click", function () {
   const promoCodeBoxInput = elementById("pomo-code-box").value;
   if (promoCodeBoxInput == "gg") {
